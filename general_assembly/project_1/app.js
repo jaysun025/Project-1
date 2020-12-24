@@ -35,7 +35,7 @@ let gameLoop = () => {
 
     zombie.render();
     }
-    hero.render();
+    player.render();
 }
 
 
