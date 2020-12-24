@@ -1,4 +1,4 @@
-let movementDisplay = movement;
+// let movementDisplay = movement;
 let gameBoard = document.getElementById('game')
 let surviver = document.getElementById('survivor')
 let zomboy = document.getElementById('zomboy')
@@ -8,7 +8,7 @@ let zomboy = document.getElementById('zomboy')
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 
-let ctx = game.getContext('2d')
+// let ctx = game.getContext('2d')
 
 function Crawler(x, y, color, width, height) {
     this.x = x
@@ -22,14 +22,14 @@ function Crawler(x, y, color, width, height) {
     ctx.fillStyle = this.color
     ctx.fillRect(this.x, this.y, this.width, this.height);
     }
-    this.newPos = function() {
-        myGameArea.clear();
-        myGamePiece.newPos();
-        myGamePiece.update();
-    }
+    // this.newPos = function() {
+    //     myGameArea.clear();
+    //     myGamePiece.newPos();
+    //     myGamePiece.update();
+    // }
 }
 
-let player = new Crawler(60, 50, 'pink', 20, 20);
+let surviver = new Crawler(60, 50, 'pink', 20, 20);
 
 new Date();
 
@@ -40,7 +40,7 @@ let gameLoop = () => {
 
     zombie.render();
     }
-    player.render();
+   surviver.render();
 }
 
 
