@@ -1,4 +1,7 @@
 let movementDisplay = movement;
+let gameBoard = document.getElementById('game')
+// define the game board(dom references)
+// make character appear on screen
 
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
