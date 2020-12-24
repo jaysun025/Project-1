@@ -1,14 +1,13 @@
 // let movementDisplay = movement;
 let gameBoard = document.getElementById('game')
-let surviver = document.getElementById('survivor')
-let zomboy = document.getElementById('zomboy')
+
 // define the game board(dom references)
 // make character appear on screen
 
-game.setAttribute('width', getComputedStyle(game)['width'])
-game.setAttribute('height', getComputedStyle(game)['height'])
+gameBoard.setAttribute('width', getComputedStyle(game)['width'])
+gameBoard.setAttribute('height', getComputedStyle(game)['height'])
 
-// let ctx = game.getContext('2d')
+let ctx = gameBoard.getContext('2d')
 
 function Crawler(x, y, color, width, height) {
     this.x = x
@@ -30,17 +29,18 @@ function Crawler(x, y, color, width, height) {
 }
 
 let surviver = new Crawler(60, 50, 'pink', 20, 20);
+let zomboy = new Crawler(0, 0, 'gray', 200, 200);
 
 new Date();
+surviver.render();
+zomboy.render();
 
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.widht, game.height)
     movementDisplay.innerText = `X: '${hero.x}\nY: ${hero.y}`
     if (zombie.alive) {
 
-    zombie.render();
     }
-   surviver.render();
 }
 
 
