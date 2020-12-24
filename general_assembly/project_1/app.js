@@ -1,5 +1,7 @@
 let movementDisplay = movement;
 let gameBoard = document.getElementById('game')
+let surviver = document.getElementById('survivor')
+let zomboy = document.getElementById('zomboy')
 // define the game board(dom references)
 // make character appear on screen
 
