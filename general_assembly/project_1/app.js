@@ -1,19 +1,19 @@
 //SELECTORS
 let gameBoard = document.getElementById('game');
-let survivor = new Crawler(600, 630, 'pink', 20, 20);
-let zomboy = new Crawler(10, 10, 'gray', 20, 20);
+let movementDisplay = game;
 let ctx = gameBoard.getContext('2d');
 // let stop = () => clearInterval(gameInterval);
 // let gameInterval = setInterval(gameLoop, 17);
                 
 
 
-// // define the game board(dom references)
+// define the game board(dom references)
 
 
 // //EVENT CALLERS
 gameBoard.setAttribute('width', getComputedStyle(game)['width'])
 gameBoard.setAttribute('height', getComputedStyle(game)['height'])
+
 
 
 // //FUNCTIONS
@@ -32,27 +32,49 @@ function Crawler(x, y, color, width, height) {
     }
     
 }
-zomboy.render();
-survivor.render();
-document.addEventListener('keypress', movementHandler)
 
-let movementHandler = e => {
+let survivor = new Crawler(600, 630, 'pink', 20, 20);
+let zomboy = new Crawler(10, 10, 'gray', 20, 20);
+
+// new Data()
+
+let gameLoop = () => {
+ctx.clearRect(0, 0, game.width, game.height)
+movementDisplay.innerText = `X: ${survivor.x}\nY: ${survivor.y}`
+if (survivor.alive) {
+    survivor.render();
+}
+zomboy.render();
+}
+
+
+
+let movementHandler= e => {
     switch(e.key) {
-            case 'a':
-            survivor.y -= 10
-            break
-            case 'd':
-            survivor.x -= 10
-            break
+    case 'w':
+    survivor.y -=10
+    break
+    case 'a':
+    survivor.x -= 10
+    break
+    case 's':
+    survivor.x +=10
+    case 'd':
+    survivor.x += 10
+    break
+    deafault; 
+    console.log('that key has no purpose here')   
             }
         }
-        
-        
+        let stop = () => clearInterval(gameInterval);
+        let gameInterval = setInterval(gameLoop, 17);
+        document.addEventListener('keypress', movementHandler);
     
-
-
-
-// let movementDisplay = movement;
+        
+        
+        
+        
+// let gameBoard = movement;
 
 // game.setAttribute('width', getComputedStyle(game)['width'])
 // game.setAttribute('height', getComputedStyle(game)['height'])
