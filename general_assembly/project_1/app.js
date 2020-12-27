@@ -1,5 +1,5 @@
-// Stop survivor from going off screen
 // Make zombie move down in a straight line
+// When zombies go off screen put in the garbage
 // When zombie makes contact survivor dies(disappears)GAME OVER MAN!!!
 // Make zombies appear at random from different points at the top =>
 // of the screen.
@@ -41,7 +41,18 @@ function Crawler(x, y, color, width, height) {
 let survivor = new Crawler(600, 630, 'pink', 20, 20);
 let zomboy = new Crawler(10, 10, 'gray', 20, 20);
   
+function zomboyMove(zomboy){
+    // while(zomboy.y < 100){
+    //     zomboy.y += 10;
 
+    // }
+ let cpMove = setInterval (function () {
+    zomboy.y += 10;
+ }, 1000); 
+ if(zomboy.y > 300) {
+     clearInterval(cpMove)
+ }
+}
 
 let gameLoop = () => {
 ctx.clearRect(0, 0, game.width, game.height)
@@ -50,6 +61,7 @@ if (survivor.alive) {
     survivor.render();
 }
 zomboy.render();
+zomboyMove(zomboy);
 }
 
 
