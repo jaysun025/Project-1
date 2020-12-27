@@ -9,7 +9,6 @@
 
 //SELECTORS
 let gameBoard = document.getElementById('game');
-// let movementDisplay = game;
 let ctx = gameBoard.getContext('2d');
 
                 
@@ -46,22 +45,28 @@ function zomboyMove(zomboy){
     //     zomboy.y += 10;
 
     // }
- let cpMove = setInterval (function () {
-    zomboy.y += 10;
- }, 1000); 
- if(zomboy.y > 300) {
-     clearInterval(cpMove)
- }
+//  let cpMove = setInterval (function () {
+//     zomboy.y += 10;
+//  }, 1000); 
+//  if(zomboy.y > 300) {
+//      clearInterval(cpMove)
+//  }
+    if (zomboy !== null) {
+
+        zomboy.y +=10;
+    }
 }
 
 let gameLoop = () => {
-ctx.clearRect(0, 0, game.width, game.height)
-// movementDisplay.innerText = `X: ${survivor.x}\nY: ${survivor.y}`
-if (survivor.alive) {
-    survivor.render();
-}
-zomboy.render();
-zomboyMove(zomboy);
+    ctx.clearRect(0, 0, game.width, game.height)
+    if (survivor.alive) {
+        survivor.render();
+    }
+    zomboy.render();
+    zomboyMove(zomboy) 
+    if(zomboy.y === game.height) {
+        zomboy = null
+    }
 }
 
 
