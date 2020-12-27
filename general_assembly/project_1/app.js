@@ -1,6 +1,15 @@
+// Stop survivor from going off screen
+// Make zombie move down in a straight line
+// When zombie makes contact survivor dies(disappears)GAME OVER MAN!!!
+// Make zombies appear at random from different points at the top =>
+// of the screen.
+// Have a clock going see how long they survivor for
+// Increase number of zombies after an amount of time passes
+
+
 //SELECTORS
 let gameBoard = document.getElementById('game');
-let movementDisplay = game;
+// let movementDisplay = game;
 let ctx = gameBoard.getContext('2d');
 
                 
@@ -12,7 +21,7 @@ gameBoard.setAttribute('height', getComputedStyle(game)['height'])
 
 
 
-// //FUNCTIONS
+// FUNCTIONS
 
 function Crawler(x, y, color, width, height) {
     this.x = x
@@ -31,12 +40,12 @@ function Crawler(x, y, color, width, height) {
 
 let survivor = new Crawler(600, 630, 'pink', 20, 20);
 let zomboy = new Crawler(10, 10, 'gray', 20, 20);
-
+  
 
 
 let gameLoop = () => {
 ctx.clearRect(0, 0, game.width, game.height)
-movementDisplay.innerText = `X: ${survivor.x}\nY: ${survivor.y}`
+// movementDisplay.innerText = `X: ${survivor.x}\nY: ${survivor.y}`
 if (survivor.alive) {
     survivor.render();
 }
@@ -48,20 +57,24 @@ zomboy.render();
 let movementHandler= e => {
     switch(e.key) {
     case 'a':
-    survivor.x -=50
+    if(survivor.x > 0) {
+        survivor.x -=50
+    }
     break
     case 'd':
-    survivor.x +=50
-    break
-    deafault; 
-    console.log('that key has no purpose here')   
-            }
+    if(survivor.x < game.width - (survivor.width * 3)) {
+        survivor.x +=50
+    }
+    break   
+    }
         }
-        let stop = () => clearInterval(gameInterval);
-        let gameInterval = setInterval(gameLoop, 50);
-        document.addEventListener('keypress', movementHandler);
+let stop = () => clearInterval(gameInterval);
+let gameInterval = setInterval(gameLoop, 50);
+document.addEventListener('keypress', movementHandler);
+
     
+ 
         
-        
-        
+
+
         
