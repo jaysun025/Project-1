@@ -1,9 +1,7 @@
-// When zombie makes contact survivor dies(disappears)GAME OVER MAN!!!
-// Make zombies appear at random from different points at the top =>
-// of the screen.
-// Radnomize where zombie comes from 
-// Have a clock going see how long they survivor for
-// Increase number of zombies after an amount of time passes
+// Have more than one zombie on screen at once
+// Make them fall through a loop so they keep coming back
+// No win function just loss
+// Increase number of zombies 
 
 
 //SELECTORS
@@ -35,11 +33,11 @@ function Crawler(x, y, color, width, height) {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
-    
 }
 
 let survivor = new Crawler(600, 630, 'pink', 20, 20);
-let zomboy = new Crawler(Math.floor(Math.random() * 1000 + 1), 10, 'gray', 20, 20);
+let zomboy = new Crawler(Math.floor(Math.random() * 1000 + 1), 0, 'gray', 20, 20);
+let zomboyOne = new Crawler(Math.floor(Math.random() * 1000 + 1), 0, 'blue', 20, 20);
   
 function zomboyMove(zomboy){
     if (zomboy !== null) {
@@ -47,16 +45,6 @@ function zomboyMove(zomboy){
     }
 }
 
-function zomboyX(min, max) {
-    console.log('hello')
-}
-
-function moreZomboys() {
-    if (Math.round(Math.random())){
-        zomboyX;
-        console.log('hello')
-    }
-}
 
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
@@ -65,14 +53,11 @@ let gameLoop = () => {
         deadSurvivor();
     }
     zomboy.render();
-    object.repeat(zomboy)
     zomboyMove(zomboy) 
     if(zomboy.y === game.height) {
-        zomboy = null
+        zomboyOne.render();
     }
-    moreZomboys();
 }
-
 
 
 
