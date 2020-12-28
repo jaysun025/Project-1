@@ -10,6 +10,7 @@
 let gameBoard = document.getElementById('game');
 let ctx = gameBoard.getContext('2d');
 
+
                 
 
 
@@ -37,7 +38,7 @@ function Crawler(x, y, color, width, height) {
 }
 
 let survivor = new Crawler(600, 630, 'pink', 20, 20);
-let zomboy = new Crawler(10, 10, 'gray', 20, 20);
+let zomboy = new Crawler(600, 10, 'gray', 20, 20);
   
 function zomboyMove(zomboy){
     if (zomboy !== null) {
@@ -49,16 +50,19 @@ let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
     if (survivor.alive) {
         survivor.render();
+        deadSurvivor();
     }
     zomboy.render();
     zomboyMove(zomboy) 
     if(zomboy.y === game.height) {
         zomboy = null
     }
-    function moreZomboys(max) {
-        return Math.floor(Math.random() Math.floor(max));
-    }
 }
+
+function zomboyX(min, max) {
+    return Math.round(Math.random() * (max-min));
+}
+
 
 
 let movementHandler= e => {
@@ -75,6 +79,16 @@ let movementHandler= e => {
     break   
     }
         }
+
+    let deadSurvivor = () => {
+    if(zomboy.x + zomboy.width > survivor.x &&
+        zomboy.x < survivor.x + survivor.width &&
+        zomboy.y < survivor.y + survivor.height &&
+        zomboy.y + zomboy.height > survivor.y) {
+            survivor.alive = false;
+    }
+}
+
 let stop = () => clearInterval(gameInterval);
 let gameInterval = setInterval(gameLoop, 50);
 document.addEventListener('keypress', movementHandler);
