@@ -1,8 +1,7 @@
-// Make zombie move down in a straight line
-// When zombies go off screen put in the garbage
 // When zombie makes contact survivor dies(disappears)GAME OVER MAN!!!
 // Make zombies appear at random from different points at the top =>
 // of the screen.
+// Radnomize where zombie comes from 
 // Have a clock going see how long they survivor for
 // Increase number of zombies after an amount of time passes
 
@@ -41,18 +40,7 @@ let survivor = new Crawler(600, 630, 'pink', 20, 20);
 let zomboy = new Crawler(10, 10, 'gray', 20, 20);
   
 function zomboyMove(zomboy){
-    // while(zomboy.y < 100){
-    //     zomboy.y += 10;
-
-    // }
-//  let cpMove = setInterval (function () {
-//     zomboy.y += 10;
-//  }, 1000); 
-//  if(zomboy.y > 300) {
-//      clearInterval(cpMove)
-//  }
     if (zomboy !== null) {
-
         zomboy.y +=10;
     }
 }
@@ -67,8 +55,10 @@ let gameLoop = () => {
     if(zomboy.y === game.height) {
         zomboy = null
     }
+    function moreZomboys(max) {
+        return Math.floor(Math.random() Math.floor(max));
+    }
 }
-
 
 
 let movementHandler= e => {
@@ -79,7 +69,7 @@ let movementHandler= e => {
     }
     break
     case 'd':
-    if(survivor.x < game.width - (survivor.width * 3)) {
+    if(survivor.x < game.width - (survivor.width * 2.5)) {
         survivor.x +=50
     }
     break   
