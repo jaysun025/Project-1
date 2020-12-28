@@ -11,6 +11,7 @@ let gameBoard = document.getElementById('game');
 let ctx = gameBoard.getContext('2d');
 
 
+
                 
 
 
@@ -38,11 +39,22 @@ function Crawler(x, y, color, width, height) {
 }
 
 let survivor = new Crawler(600, 630, 'pink', 20, 20);
-let zomboy = new Crawler(600, 10, 'gray', 20, 20);
+let zomboy = new Crawler(Math.floor(Math.random() * 1000 + 1), 10, 'gray', 20, 20);
   
 function zomboyMove(zomboy){
     if (zomboy !== null) {
         zomboy.y +=10;
+    }
+}
+
+function zomboyX(min, max) {
+    console.log('hello')
+}
+
+function moreZomboys() {
+    if (Math.round(Math.random())){
+        zomboyX;
+        console.log('hello')
     }
 }
 
@@ -53,15 +65,14 @@ let gameLoop = () => {
         deadSurvivor();
     }
     zomboy.render();
+    object.repeat(zomboy)
     zomboyMove(zomboy) 
     if(zomboy.y === game.height) {
         zomboy = null
     }
+    moreZomboys();
 }
 
-function zomboyX(min, max) {
-    return Math.round(Math.random() * (max-min));
-}
 
 
 
